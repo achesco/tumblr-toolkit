@@ -1,7 +1,7 @@
 synology-nodejs-bin
 ===================
 
-NodeJS binary build for Synology DiskStation. Only one for now.
+NodeJS binary build for Synology DiskStation. Only one for the moment.
 
 Supported Models
 ================
