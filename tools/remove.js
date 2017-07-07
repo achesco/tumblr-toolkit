@@ -1,5 +1,5 @@
 
-const feed = require('./lib/feed');
+const feed = require('../lib/feed');
 
 module.exports = function (cli) {
     const blogName = cli.b;

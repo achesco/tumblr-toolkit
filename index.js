@@ -2,4 +2,4 @@
 
 const cli = require('./lib/cli');
 
-require(`./${cli._[0]}`)(cli);
+require(`./tools/${cli._[0]}`)(cli);

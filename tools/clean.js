@@ -1,5 +1,5 @@
 
-const feed = require('./lib/feed');
+const feed = require('../lib/feed');
 const fetch = require('node-fetch');
 
 module.exports = function (cli) {
