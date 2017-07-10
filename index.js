@@ -1,5 +1,4 @@
 #! /usr/bin/env node
 
-const cli = require('./lib/cli');
-
-require(`./tools/${cli._[0]}`)(cli);
+const argv = require('./lib/cli').cli.argv;
+require(`./tools/${argv._[0]}`)(argv);
