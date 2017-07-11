@@ -4,6 +4,9 @@ const fetch = require('node-fetch');
 
 module.exports = function (cli) {
     const blogName = cli.b;
+    
+    cli.postType = 'video';
+    cli.s = cli.source = 'blog';
 
     feed(cli, process);
 

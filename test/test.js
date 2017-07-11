@@ -18,24 +18,28 @@ describe('CLI', function() {
 
     describe('Common params', function () {
         const argv = parse('cmd');
+        const argvAll = parse('cmd', ['-s', 'queue', '-l', 66]);
 
         it('command passed', function () {
             assert.equal('cmd', argv._[0]);
         });
-        it('blog param passed', function () {
-            assert.equal('blogName', argv.b);
-        });
         it('credentials parsed', function () {
             assert.equal('credentilas_object_here', argv.c);
         });
-    });
-
-    describe('Command clean', function () {
-        it('should accept video post-type', function () {
-            assert.equal('video', parse('clean', ['--post-type', 'video']).postType);
+        it('params passed', function () {
+            assert.ok(
+                argvAll.b === 'blogName' &&
+                argvAll.l === 66 &&
+                true
+            );
         });
-        it('shouldn\'t accept other then video post-type', function () {
-            assert.throws(() => { parse('clean', ['--post-type', 'audio']) });
+        it('aliases should work', function () {
+            assert.ok(
+                argvAll.c === argvAll.credentilas &&
+                argvAll.b === argvAll.blog &&
+                argvAll.l === argvAll.limit &&
+                true
+            );
         });
     });
 
@@ -46,9 +50,12 @@ describe('CLI', function() {
     });
 
     describe('Command tag-type', function () {
+        it('shouldn\'t accept non-existent source', function () {
+            assert.throws(() => { parse('tag-type', ['-s', 'foo']) });
+        });
         it('shouldn\'t accept non-existent post-type', function () {
             assert.throws(() => { parse('tag-type', ['--post-type', 'foo']) });
         });
     });
-
+    
 });
