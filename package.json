@@ -1,18 +1,21 @@
 {
   "name": "tumblr-toolkit",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Tumblr API-based toolkit for batch posts processing.",
   "main": "index.js",
   "dependencies": {
     "node-fetch": "1.7.1",
     "tumblr.js": "1.1.1",
-    "yargs": "8.0.2"
+    "yargs": "git+ssh://git@github.com/yargs/yargs.git#eda6251da656f0846a9b27587be4fca7d8a8a9ce"
+  },
+  "devDependencies": {
+    "mocha": "3.4.2"
   },
   "bin": {
     "tt": "./index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -20,8 +23,13 @@
   },
   "keywords": [
     "tumblr",
-    "toolkit",
-    "api"
+    "api",
+    "cli",
+    "403",
+    "access denied",
+    "tag",
+    "post",
+    "clean"
   ],
   "author": "Anton Lysenko <achesco@gmail.com> (https://antonlysenko.com/)",
   "engines": {
