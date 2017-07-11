@@ -20,6 +20,11 @@ tt clean -c path/to/keys.json -b blogName --clean-code 200 --clean-invert true
 
 Deletes posts that fit passed conditions.
 
+Remove first 10 posts from queue
+```bash
+tt remove -c path/to/keys.json -b blogName -s queue
+```
+
 Find and show posts that will be removed. No removal action will be taken
 ```bash
 tt remove -c path/to/keys.json -b blogName --post-type audio --post-tag garbage
@@ -37,6 +42,11 @@ Tags video posts with 'video' tag, audio with 'audio' and so on...
 Tag all posts
 ```bash
 tt tag-type -c path/to/keys.json -b blogName
+```
+
+Tag all posts in queue
+```bash
+tt tag-type -c path/to/keys.json -b blogName -s queue
 ```
 
 Tag all posts, for photo-posts containing GIFs, additionally set 'gif' tag
