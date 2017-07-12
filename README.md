@@ -59,6 +59,33 @@ Tag all photo posts containing GIFs with 'gif' tag instead of 'photo' tag
 tt tag-type -c path/to/keys.json -b blogName --post-type photo --tag-type-gif replace
 ```
 
+## Process posts with given source code
+
+Perform function built from given user code. Should return one of the constants
+from given ``codes`` object. May return promise resolving to one of the codes
+as well. Function receives ``post`` and ``codes`` (return codes) as arguments,
+return one of return codes for further post process.
+
+Example source code:
+
+```js
+return post.type === 'link' ? code.REMOVE_POST : code.DO_NOTHING;
+```
+Would remove all link posts and keep other.
+
+```js
+post.tags.push('new tag');
+return code.UPDATE_POST;
+```
+Would update post with new added tag.
+
+Codes are: ``DO_NOTHING``, ``UPDATE_POST``, ``REMOVE_POST``
+
+Remove all posts having 'bad post' tag from blog's queue
+```bash
+tt process -c path/to/keys.json -b blogName -s queue "return post.tags.indexOf('bad post') >= 0 ? codes.REMOVE_POST : code.DO_NOTHING;"
+```
+
 ## See all commands common and specific options with
 
 ```bash
@@ -72,6 +99,9 @@ tt remove --help
 ```
 ```bash
 tt tag-type --help
+```
+```bash
+tt process --help
 ```
 
 ## Credentials
