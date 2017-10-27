@@ -2,6 +2,12 @@
 
 Set of CLI tools for your tumblr blog.
 
+## Installation
+
+```bash
+npm install -g tumblr-toolkit
+```
+
 ## Clean broken video posts tool
 
 Broken media posts cleaning tool. Cleans up (removes) video-posts with media pointing to 403 error returning URLs (by default). See available options below.
@@ -118,12 +124,6 @@ should be provided. File content JSON should look like this:
 }
 ```
 
-## Usage
-
-Installing the tool:
-```bash
-npm install -g tumblr-toolkit
-```
 
 ### Get access with Tumblr
 * [Tumblr auto auth tool](https://github.com/achesco/tumblr-auto-auth)
