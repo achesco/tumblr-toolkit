@@ -1,1 +1,4 @@
-"credentilas_object_here"
+{
+	"key": "KEY",
+	"secret": "SECRET"
+}

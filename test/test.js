@@ -1,61 +1,71 @@
 const assert = require('assert');
 const cli = require('../lib/cli').cli;
 
-describe('CLI', function() {
+describe('CLI', () => {
 
-    cli
-         .fail(function () {
-            throw Error;
-        })
+	cli
+		.command('test')
+		.fail(error => { throw error })
 
-    function parse(command, args = []) {
-        return cli.parse([
-                command,
-                '-c', './test/cred.json',
-                '-b', 'blogName'
-            ].concat(args));
-    }
+	function parse(command, args = []) {
+		return cli.parse([
+			command,
+			'-c', './test/cred.json',
+			'-b', 'blogName'
+		].concat(args));
+	}
 
-    describe('Common params', function () {
-        const argv = parse('cmd');
-        const argvAll = parse('cmd', ['-s', 'queue', '-l', 66]);
+	describe('Common params', () => {
 
-        it('command passed', function () {
-            assert.equal('cmd', argv._[0]);
-        });
-        it('credentials parsed', function () {
-            assert.equal('credentilas_object_here', argv.c);
-        });
-        it('params passed', function () {
-            assert.ok(
-                argvAll.b === 'blogName' &&
-                argvAll.l === 66 &&
-                true
-            );
-        });
-        it('aliases should work', function () {
-            assert.ok(
-                argvAll.c === argvAll.credentilas &&
-                argvAll.b === argvAll.blog &&
-                argvAll.l === argvAll.limit &&
-                true
-            );
-        });
-    });
+		it('should fail on unknown command', () => {
+			assert.throws(() => parse('unknown_command'));
+		});
 
-    describe('Command remove', function () {
-        it('shouldn\'t accept non-existent post-type', function () {
-            assert.throws(() => { parse('remove', ['--post-type', 'foo']) });
-        });
-    });
+		it('parse known command', () => {
+			const argv = parse('test');
+			assert.equal('test', argv._[0]);
+		});
 
-    describe('Command tag-type', function () {
-        it('shouldn\'t accept non-existent source', function () {
-            assert.throws(() => { parse('tag-type', ['-s', 'foo']) });
-        });
-        it('shouldn\'t accept non-existent post-type', function () {
-            assert.throws(() => { parse('tag-type', ['--post-type', 'foo']) });
-        });
-    });
-    
+		it('parse blog param', () => {
+			const argv = parse('test');
+			assert.equal('blogName', argv.blog, argv.b);
+		});
+
+		it('parse credentials json', () => {
+			const argv = parse('test');
+			assert.deepEqual(
+				require('./cred.json'),
+				argv.credentials,
+				argv.c,
+			);
+		});
+
+		it('set default limit param', () => {
+			const argv = parse('test');
+			assert.deepEqual(argv.l, argv.limit);
+			assert.equal(typeof argv.l, 'number');
+			assert.ok(argv.l > 0);
+		});
+
+		it('parse limit param', () => {
+			const argv = parse('test', ['-l', 999]);
+			assert.deepEqual(argv.l, argv.limit, 999);
+		});
+	});
+
+	describe('Command remove', () => {
+		it('shouldn\'t accept non-existent post-type', () => {
+			assert.throws(() => { parse('remove', ['--post-type', 'foo']) });
+		});
+	});
+
+	describe('Command tag-type', () => {
+		it('shouldn\'t accept non-existent source', () => {
+			assert.throws(() => { parse('tag-type', ['-s', 'foo']) });
+		});
+		it('shouldn\'t accept non-existent post-type', () => {
+			assert.throws(() => { parse('tag-type', ['--post-type', 'foo']) });
+		});
+	});
+
 });
