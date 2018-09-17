@@ -2,7 +2,19 @@
 
 Set of CLI tools for your tumblr blog.
 
-## Clean broken video posts tool
+### Post media file to blog
+
+````bash
+tt post -c path/to/keys.json -b blogName -m photo -f path/to/pic.jpg
+````
+
+Optional params (with example)
+
+```--caption "My pic"```
+
+``` --tags "one, second one"```
+
+### Clean broken video posts tool
 
 Broken media posts cleaning tool. Cleans up (removes) video-posts with media pointing to 403 error returning URLs (by default). See available options below.
 
@@ -16,11 +28,12 @@ Clean through videos returning HTTP status code other than 200 (OK)
 tt clean -c path/to/keys.json -b blogName --clean-code 200 --clean-invert true
 ```
 
-## Posts removal tool
+### Posts removal tool
 
 Deletes posts that fit passed conditions.
 
-Remove first 10 posts from queue
+### Remove first 10 posts from queue
+
 ```bash
 tt remove -c path/to/keys.json -b blogName -s queue
 ```
@@ -35,7 +48,7 @@ Remove all audio-posts, perform actual removal (dry-run false)
 tt remove -c path/to/keys.json -b blogName --post-type audio --remove-dry-run false
 ```
 
-## Tag posts by post's actual type tool
+### Tag posts by post's actual type tool
 
 Tags video posts with 'video' tag, audio with 'audio' and so on...
 
@@ -59,7 +72,7 @@ Tag all photo posts containing GIFs with 'gif' tag instead of 'photo' tag
 tt tag-type -c path/to/keys.json -b blogName --post-type photo --tag-type-gif replace
 ```
 
-## Process posts with given source code
+### Process posts with given source code
 
 Perform function built from given user code. Should return one of the constants
 from given ``codes`` object. May return promise resolving to one of the codes
@@ -92,18 +105,8 @@ tt process -c path/to/keys.json -b blogName -s queue "return post.tags.indexOf('
 tt --help
 ```
 ```bash
-tt clean --help
+tt <post|clean|remove|tag-type|process> --help
 ```
-```bash
-tt remove --help
-```
-```bash
-tt tag-type --help
-```
-```bash
-tt process --help
-```
-
 ## Credentials
 
 In order to use tumblr api for getting and processing posts, credentials file

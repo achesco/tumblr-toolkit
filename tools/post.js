@@ -24,7 +24,7 @@ module.exports = async (params) => {
 		post.caption = params.caption;
 	}
 
-	const tumblr = tumblrJs.createparamsent({
+	const tumblr = tumblrJs.createClient({
 		credentials: params.credentials,
 		returnPromises: true,
 	});
