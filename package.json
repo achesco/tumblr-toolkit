@@ -2,7 +2,7 @@
   "name": "tumblr-toolkit",
   "version": "0.3.2",
   "description": "Tumblr API-based toolkit for batch posts processing.",
-  "main": "index.js",
+  "main": "api.js",
   "dependencies": {
     "node-fetch": "1.7.1",
     "tumblr.js": "1.1.1",

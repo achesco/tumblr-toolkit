@@ -10,6 +10,11 @@ process.on('uncaughtException', error => {
 });
 
 const argv = require('./lib/cli').cli.argv;
-const tool = require(`./tools/${argv._[0]}`)(argv);
-const feed = require('./lib/feed')(tool.cli);
-feed.stream(tool.processor);
+const command = argv._[0];
+
+const tool = require(`./tools/${command}`)(argv);
+// ugly as hell 
+if (command !== 'post') {
+	const feed = require('./lib/feed')(tool.cli);
+	feed.stream(tool.processor);
+}
