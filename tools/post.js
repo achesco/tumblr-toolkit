@@ -32,7 +32,9 @@ module.exports = async (params) => {
 	try {
 		const result = await tumblr[methods[params.media]](params.blog, post);
 		console.log(result);
+		return result;
 	} catch (error) {
 		console.error(error);
+		return error;
 	}
 }
