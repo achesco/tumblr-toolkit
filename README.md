@@ -14,6 +14,12 @@ Optional params (with example)
 
 ``` --tags "one, second one"```
 
+### Post media file to blog
+
+````bash
+tt postInfo -c path/to/keys.json -b blogName --id "post-id"
+````
+
 ### Clean broken video posts tool
 
 Broken media posts cleaning tool. Cleans up (removes) video-posts with media pointing to 403 error returning URLs (by default). See available options below.
