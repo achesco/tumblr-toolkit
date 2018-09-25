@@ -14,7 +14,7 @@ Optional params (with example)
 
 ``` --tags "one, second one"```
 
-### Post media file to blog
+### Get post info
 
 ````bash
 tt postInfo -c path/to/keys.json -b blogName --id "post-id"
