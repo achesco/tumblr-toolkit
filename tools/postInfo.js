@@ -10,8 +10,9 @@ module.exports = async (params) => {
 
 	try {
 		const { posts } = await tumblr.blogPosts(params.blog, { id });
-		console.log(posts);
-		return (posts || [])[0];
+		const post = (posts || [])[0];
+		console.log(post);
+		return post;
 	} catch (error) {
 		console.error(error);
 		return error;
