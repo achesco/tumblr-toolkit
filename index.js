@@ -11,6 +11,7 @@ process.on('uncaughtException', error => {
 
 const argv = require('./lib/cli').cli.argv;
 const command = argv._[0];
+argv.isCli = true;
 
 const tool = require(`./tools/${command}`)(argv);
 

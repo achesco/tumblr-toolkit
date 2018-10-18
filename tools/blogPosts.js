@@ -10,7 +10,7 @@ module.exports = async (params) => {
 
 	try {
 		const { posts } = await tumblr.blogPosts(params.blog, limit ? { limit } : {});
-		console.log(posts);
+		params.isCli && console.log(posts);
 		return posts;
 	} catch (error) {
 		console.error(error);
