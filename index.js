@@ -13,8 +13,9 @@ const argv = require('./lib/cli').cli.argv;
 const command = argv._[0];
 
 const tool = require(`./tools/${command}`)(argv);
+
 // ugly as hell 
-if (!['post', 'postInfo'].includes(command)) {
+if (!Object.keys(require('./api')).includes(command)) {
 	const feed = require('./lib/feed')(tool.cli);
 	feed.stream(tool.processor);
 }

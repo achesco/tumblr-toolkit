@@ -20,6 +20,24 @@ Optional params (with example)
 tt postInfo -c path/to/keys.json -b blogName --id "post-id"
 ````
 
+### List blog posts
+
+````bash
+tt blogPosts -c path/to/keys.json -b blogName --limit 12
+````
+
+### List blog queued posts
+
+````bash
+tt blogQueue -c path/to/keys.json -b blogName --limit 12
+````
+
+### List blog draft posts
+
+````bash
+tt blogDraft -c path/to/keys.json -b blogName --limit 12
+````
+
 ### Clean broken video posts tool
 
 Broken media posts cleaning tool. Cleans up (removes) video-posts with media pointing to 403 error returning URLs (by default). See available options below.
