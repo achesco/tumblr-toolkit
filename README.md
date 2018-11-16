@@ -14,6 +14,12 @@ Optional params (with example)
 
 ``` --tags "one, second one"```
 
+### Get blog info
+
+````bash
+tt blogInfo -c path/to/keys.json -b blogName
+````
+
 ### Get post info
 
 ````bash
